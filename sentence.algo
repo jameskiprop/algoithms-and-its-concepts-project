@@ -1,0 +1,34 @@
+ALGORITHM read_sentence
+VAR
+    vowelNum, wordNum, charNum :- INTEGER; //integer variables to keep track of the number of vowels, words and characters in the sentence
+    sentence :-STRING []; //an array of characters (`STRING[]`), that holds the sentence input by the user
+BEGIN
+    charNum := 0;
+    wordNum := 1;
+    vowelNum := 0;
+
+    write("type the sentence")
+    read(sentence) //Reads the user's input and stores it in the sentence array.
+
+    REPEAT
+        //If current is a space("") then word counter is incremented
+    IF (sentence[charNum] = " ") THEN //Checks if the current character in the array is a space (" ").
+    wordNum := wordNum + 1;
+    END_IF
+
+    IF (sentence[charNum] in ["a", "e", "i", "o", "u"]) THEN
+    vowelNum :- vowelNum + 1; //If it is a vowel, the vowel count is incremented.
+
+    /*counting the characters*/
+    charNum := charNum + 1;
+
+    /*terminating the loop*/
+    UNTIL (sentence[charNum] = ".")
+    //the loop continues until the current character is a period (.)
+
+    /*Outputting the final value*/
+
+    write("Number of Characters:", charNum + 1)
+    write("Number of Words:", wordNum)
+    write("Number of vowels:", vowelNum)
+END
